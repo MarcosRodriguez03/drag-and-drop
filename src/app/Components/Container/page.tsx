@@ -8,13 +8,13 @@ import clsx from 'clsx';
 
 import React, { useState } from 'react'
 
-type ContainerProps = {
-    id: UniqueIdentifier;
-    children: React.ReactNode;
-    title?: string;
-    closeMe: boolean
-    onAddItem?: () => void;
-}
+// type ContainerProps = {
+//     id: UniqueIdentifier;
+//     children: React.ReactNode;
+//     title?: string;
+//     closeMe: boolean
+//     onAddItem?: () => void;
+// }
 
 
 
@@ -24,7 +24,7 @@ const Container = ({
     title,
     onAddItem,
     closeMe
-}: ContainerProps) => {
+}: any) => {
     const [hide, setHide] = useState<string>('');
 
     const {
