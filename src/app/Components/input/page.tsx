@@ -1,15 +1,15 @@
 'use client'
 import React from 'react';
 
-type InputProps = {
-    type: string;
-    name: string;
-    placeholder?: string;
-    value?: string;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+// type InputProps = {
+//     type: string;
+//     name: string;
+//     placeholder?: string;
+//     value?: string;
+//     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+// }
 
-const Input = ({ name, value, placeholder, onChange }: InputProps) => {
+const Input = ({ name, value, placeholder, onChange }: any) => {
     return (
         <input
 
