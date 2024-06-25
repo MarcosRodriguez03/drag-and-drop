@@ -8,19 +8,19 @@ import { Dispatch, SetStateAction } from 'react';
 
 
 // Types
-type ModalProps = {
-    children: React.ReactNode;
-    showModal: boolean;
-    setShowModal: Dispatch<SetStateAction<boolean>>;
-    containerClasses?: string;
-}
+// type ModalProps = {
+//     children: React.ReactNode;
+//     showModal: boolean;
+//     setShowModal: Dispatch<SetStateAction<boolean>>;
+//     containerClasses?: string;
+// }
 
 export default function Modal({
     children,
     showModal,
     setShowModal,
     containerClasses,
-}: ModalProps) {
+}: any) {
     const desktopModalRef = useRef(null);
 
     const onKeyDown = useCallback(
