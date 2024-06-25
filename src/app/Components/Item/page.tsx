@@ -6,12 +6,12 @@ import React from 'react';
 import { CSS } from '@dnd-kit/utilities';
 import clsx from 'clsx';
 
-type ItemsType = {
-    id: UniqueIdentifier;
-    title: string;
-};
+// type ItemsType = {
+//     id: UniqueIdentifier;
+//     title: string;
+// };
 
-const Items = ({ id, title }: ItemsType) => {
+const Items = ({ id, title }: any) => {
     const {
         attributes,
         listeners,
