@@ -1,31 +1,25 @@
-'use client'
-import { UniqueIdentifier } from '@dnd-kit/core'
-import { useSortable } from '@dnd-kit/sortable'
-import { CSS } from '@dnd-kit/utilities'
+import React, { useState } from 'react';
+import { UniqueIdentifier } from '@dnd-kit/core';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import clsx from 'clsx';
-
-
-
-import React, { useState } from 'react'
 
 type ContainerProps = {
     id: UniqueIdentifier;
     children: React.ReactNode;
     title?: string;
     description?: string;
-    closeMe: boolean
+    closeMe: boolean;
     onAddItem?: () => void;
-}
+};
 
-
-
-const Container = ({
+const Container: React.FC<ContainerProps> = ({
     id,
     children,
     title,
     description,
+    closeMe,
     onAddItem,
-    closeMe
 }: ContainerProps) => {
     const [hide, setHide] = useState<string>('');
 
@@ -39,21 +33,21 @@ const Container = ({
     } = useSortable({
         id: id,
         data: {
-            type: 'container'
+            type: 'container',
         },
     });
 
-    const hanldeCheck = () => {
-        console.log(id)
-        console.log(title)
-        console.log(children)
-        console.log(description)
-        console.log(closeMe)
-    }
+    const handleCheck = () => {
+        console.log(id);
+        console.log(title);
+        console.log(children);
+        console.log(description);
+        console.log(closeMe);
+    };
 
     return (
         <div
-            onClick={() => alert("hi")}
+            onClick={() => alert('hi')}
             {...attributes}
             {...listeners}
             ref={setNodeRef}
@@ -63,32 +57,36 @@ const Container = ({
             }}
             className={clsx(
                 'w-full h-full p-4 bg-gray-50 rounded-xl flex flex-col gap-y-4',
-                isDragging && 'opacity-50', hide
+                isDragging && 'opacity-50',
+                hide
             )}
         >
             <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-y-1">
                     <h1 className="text-gray-800 text-xl">{title}</h1>
-
                 </div>
-                <button
-                    className="border p-2 text-xs rounded-xl shadow-lg hover:shadow-xl"
-                >
+                <button className="border p-2 text-xs rounded-xl shadow-lg hover:shadow-xl">
                     Drag Handle
                 </button>
             </div>
 
-
-            <button className='text-black' onClick={onAddItem}>
+            <button className="text-black" onClick={onAddItem}>
                 Add Item
             </button>
             <input type="checkbox" className="checkbox" />
 
-            <button className='text-black' onClick={(e) => { closeMe = false, hanldeCheck(), setHide("hidden") }}>
+            <button
+                className="text-black"
+                onClick={(e) => {
+                    closeMe = false; // You cannot directly assign to closeMe if it's a prop, use state or props setter
+                    handleCheck();
+                    setHide('hidden');
+                }}
+            >
                 Remove
             </button>
         </div>
-    )
-}
+    );
+};
 
-export default Container
+export default Container;
